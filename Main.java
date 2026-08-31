@@ -5,13 +5,14 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Frame frame = new Frame("Virus Simulation");
+        Frame frame = new Frame("Football Simulation");
 
         SimulationPanel panel = new SimulationPanel();
 
-        frame.add(panel);
+        panel.setPreferredSize(new Dimension(1000, 650));
 
-        frame.setSize(800, 600);
+        frame.add(panel);
+        frame.pack();
         frame.setVisible(true);
 
         frame.addWindowListener(
