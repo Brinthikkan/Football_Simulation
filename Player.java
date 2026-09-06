@@ -1,4 +1,4 @@
-public class Player extends Entity {
+public abstract class Player extends Entity {
 
 int number;
 
@@ -7,5 +7,10 @@ int number;
         this.number = number;
     }
 
+    boolean hasPossession(Ball ball) {
+    return xPos == ball.xPos && yPos == ball.yPos;
+}
+
+    abstract void pass();
     
 }
