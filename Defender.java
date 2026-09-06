@@ -1,7 +1,12 @@
 public class Defender extends Player {
 
-    Defender (int number, int xPos, int yPos){
-        super (number, xPos, yPos);
+    Defender(int number, int xPos, int yPos) {
+        super(number, xPos, yPos);
     }
-    
+
+    @Override
+    void pass() {
+
+    }
+
 }
