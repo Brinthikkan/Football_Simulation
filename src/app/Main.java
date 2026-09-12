@@ -9,6 +9,7 @@ import entities.Defender;
 import entities.Goalkeeper;
 import entities.Midfielder;
 import ui.SimulationPanel;
+import entities.Player;
 
 public class Main {
 
@@ -19,21 +20,44 @@ public class Main {
 
         Frame frame = new Frame("Football Simulation");
 
-        SimulationPanel panel = new SimulationPanel();
+        Goalkeeper redGoalkeeper = new Goalkeeper(1, pitchWidth / 12, pitchHeight / 2);
+        Defender redDefender1 = new Defender(2, pitchWidth / 5, pitchHeight / 3);
+        Defender redDefender2 = new Defender(3, pitchWidth / 5, (pitchHeight * 2) / 3);
+        Midfielder redMidfielder1 = new Midfielder(4, (pitchWidth * 2) / 5, pitchHeight / 5);
+        Midfielder redMidfielder2 = new Midfielder(5, (pitchWidth * 2) / 5, (pitchHeight * 4) / 5);
+        Attacker redAttacker = new Attacker(6, (pitchWidth * 3) / 5, pitchHeight / 2);
 
-        Goalkeeper goalkeeper = new Goalkeeper(1, pitchWidth / 12, pitchHeight / 2);
-        Defender defender1 = new Defender(2, pitchWidth / 5, pitchHeight / 3);
-        Defender defender2 = new Defender(3, pitchWidth / 5, (pitchHeight * 2) / 3);
-        Midfielder midfielder1 = new Midfielder(4, (pitchWidth * 2) / 5, pitchHeight / 5);
-        Midfielder midfielder2 = new Midfielder(5, (pitchWidth * 2) / 5, (pitchHeight * 4) / 5);
-        Attacker attacker = new Attacker(6, (pitchWidth * 3) / 5, pitchHeight / 2);
+        Goalkeeper blueGoalkeeper = new Goalkeeper(1, (pitchWidth * 11) / 12, pitchHeight / 2);
+        Defender blueDefender1 = new Defender(2, (pitchWidth * 4) / 5, pitchHeight / 3);
+        Defender blueDefender2 = new Defender(3, (pitchWidth * 4) / 5, (pitchHeight * 2) / 3);
+        Midfielder blueMidfielder1 = new Midfielder(4, (pitchWidth * 3) / 5, pitchHeight / 5);
+        Midfielder blueMidfielder2 = new Midfielder(5, (pitchWidth * 3) / 5, (pitchHeight * 4) / 5);
+
+        Attacker blueAttacker = new Attacker(6, (pitchWidth * 2) / 5, pitchHeight / 2);
+Player[] redPlayers = {
+        redGoalkeeper,
+        redDefender1,
+        redDefender2,
+        redMidfielder1,
+        redMidfielder2,
+        redAttacker
+};
+
+        Player[] bluePlayers = {
+        blueGoalkeeper,
+        blueDefender1,
+        blueDefender2,
+        blueMidfielder1,
+        blueMidfielder2,
+        blueAttacker
+};
 
         Ball ball = new Ball(
-                goalkeeper.getXPos(),
-                goalkeeper.getYPos());
+                redGoalkeeper.getXPos(),
+                redGoalkeeper.getYPos());
 
-        System.out.println(goalkeeper.hasPossession(ball));
-        System.out.println(defender1.hasPossession(ball));
+        SimulationPanel panel = new SimulationPanel(redPlayers, bluePlayers, ball);
+
 
         panel.setPreferredSize(new Dimension(pitchWidth, pitchHeight));
 
