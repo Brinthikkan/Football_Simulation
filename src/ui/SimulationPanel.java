@@ -1,8 +1,10 @@
+package ui;
+
 import java.awt.*;
 
 public class SimulationPanel extends Panel {
 
-    SimulationPanel(){
+    public SimulationPanel() {
         setBackground(Color.GREEN);
     }
 
@@ -15,10 +17,9 @@ public class SimulationPanel extends Panel {
         System.out.println("Width: " + width);
         System.out.println("Height:" + height);
 
-
-        g.drawLine(width/2, 0, width/2, height);
+        g.drawLine(width / 2, 0, width / 2, height);
         g.drawRect(0, 175, 150, 300);
-        g.drawRect(width-150, 175, 150, 300);
+        g.drawRect(width - 150, 175, 150, 300);
     }
 
 }

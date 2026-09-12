@@ -1,5 +1,14 @@
+package app;
+
 import java.awt.*;
 import java.awt.event.*;
+
+import entities.Attacker;
+import entities.Ball;
+import entities.Defender;
+import entities.Goalkeeper;
+import entities.Midfielder;
+import ui.SimulationPanel;
 
 public class Main {
 
@@ -19,7 +28,10 @@ public class Main {
         Midfielder midfielder2 = new Midfielder(5, (pitchWidth * 2) / 5, (pitchHeight * 4) / 5);
         Attacker attacker = new Attacker(6, (pitchWidth * 3) / 5, pitchHeight / 2);
 
-        Ball ball = new Ball(goalkeeper.xPos, goalkeeper.yPos);
+        Ball ball = new Ball(
+                goalkeeper.getXPos(),
+                goalkeeper.getYPos());
+
         System.out.println(goalkeeper.hasPossession(ball));
         System.out.println(defender1.hasPossession(ball));
 
