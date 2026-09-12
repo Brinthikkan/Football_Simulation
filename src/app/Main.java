@@ -3,6 +3,8 @@ package app;
 import java.awt.*;
 import java.awt.event.*;
 
+import javax.swing.Timer;               // added to try get the ball to Update every n milliseconds
+
 import entities.Ball;
 import entities.Player;
 import entities.TeamComp;
