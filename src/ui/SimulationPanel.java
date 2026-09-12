@@ -3,6 +3,7 @@ package ui;
 import java.awt.*;
 import entities.Player;
 import entities.Ball;
+import entities.Team;
 import world.Goal;
 import world.PlaySpace;
 import world.Environment;
@@ -12,28 +13,28 @@ public class SimulationPanel extends Panel {
 
     private GameMap map;
 
-    private Player[] redPlayers;
-    private Player[] bluePlayers;
+    private Team redTeam;
+    private Team blueTeam;
     private Ball ball;
 
     public SimulationPanel(
             GameMap map,
-            Player[] redPlayers,
-            Player[] bluePlayers,
+            Team redTeam,
+            Team blueTeam,
             Ball ball) {
 
         this.map = map;
-        this.redPlayers = redPlayers;
-        this.bluePlayers = bluePlayers;
+        this.redTeam = redTeam;
+        this.blueTeam = blueTeam;
         this.ball = ball;
     }
 
     private void drawPlayers(
-        Graphics g,
-        Player[] players,
-        Color colour,
-        int offsetX,
-        int offsetY) {
+            Graphics g,
+            Player[] players,
+            Color colour,
+            int offsetX,
+            int offsetY) {
 
         int playerSize = 24;
 
@@ -55,25 +56,20 @@ public class SimulationPanel extends Panel {
 
         int marginX = (int) map.getMarginX();
         int marginY = (int) map.getMarginY();
-        
 
         g.setColor(environment.getSurroundingTerrain().getDisplayColor());
         g.fillRect(
-            0,
-            0,
-            getWidth(),
-            getHeight()
-        );
-
+                0,
+                0,
+                getWidth(),
+                getHeight());
 
         g.setColor(environment.getPlayingTerrain().getDisplayColor());
         g.fillRect(
-            marginX,
-            marginY,
-            (int) playSpace.getWidth(),
-            (int) playSpace.getHeight()
-        );
-
+                marginX,
+                marginY,
+                (int) playSpace.getWidth(),
+                (int) playSpace.getHeight());
 
         g.setColor(Color.WHITE);
 
@@ -110,9 +106,22 @@ public class SimulationPanel extends Panel {
 
         // g.setColor(Color.RED);
 
-        drawPlayers(g, redPlayers, Color.RED, marginX, marginY);
-        drawPlayers(g, bluePlayers, Color.BLUE, marginX, marginY);
-        
+        drawPlayers(
+            g, 
+            redTeam.getPlayers(), 
+            redTeam.getColor(), 
+            marginX, 
+            marginY
+        );
+
+        drawPlayers(
+            g, 
+            blueTeam.getPlayers(), 
+            blueTeam.getColor(), 
+            marginX, 
+            marginY
+        );
+
         // Ball Draw
         int ballSize = 12;
 

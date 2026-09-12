@@ -3,13 +3,10 @@ package app;
 import java.awt.*;
 import java.awt.event.*;
 
-import entities.Attacker;
 import entities.Ball;
-import entities.Defender;
-import entities.Goalkeeper;
-import entities.Midfielder;
 import entities.Player;
-
+import entities.TeamComp;
+import entities.Team;
 import ui.SimulationPanel;
 
 import world.GameMap;
@@ -25,56 +22,20 @@ public class Main {
 
                 Frame frame = new Frame("Football Simulation");
 
-                Goalkeeper redGoalkeeper = new Goalkeeper(1, playSpace.getWidth() / 12, playSpace.getHeight() / 2);
-                Defender redDefender1 = new Defender(2, playSpace.getWidth() / 5, playSpace.getHeight() / 3);
-                Defender redDefender2 = new Defender(3, playSpace.getWidth() / 5, (playSpace.getHeight() * 2) / 3);
-                Midfielder redMidfielder1 = new Midfielder(4, (playSpace.getWidth() * 2) / 5,
-                                playSpace.getHeight() / 5);
-                Midfielder redMidfielder2 = new Midfielder(5, (playSpace.getWidth() * 2) / 5,
-                                (playSpace.getHeight() * 4) / 5);
-                Attacker redAttacker = new Attacker(6, (playSpace.getWidth() * 3) / 5, playSpace.getHeight() / 2);
+                Player[] redPlayers = TeamComp.createLeftTeam(playSpace);
+                Player[] bluePlayers = TeamComp.createRightTeam(playSpace);
 
-                Goalkeeper blueGoalkeeper = new Goalkeeper(1, (playSpace.getWidth() * 11) / 12,
-                                playSpace.getHeight() / 2);
-                Defender blueDefender1 = new Defender(2, (playSpace.getWidth() * 4) / 5, playSpace.getHeight() / 3);
-                Defender blueDefender2 = new Defender(3, (playSpace.getWidth() * 4) / 5,
-                                (playSpace.getHeight() * 2) / 3);
-                Midfielder blueMidfielder1 = new Midfielder(4, (playSpace.getWidth() * 3) / 5,
-                                playSpace.getHeight() / 5);
-                Midfielder blueMidfielder2 = new Midfielder(5, (playSpace.getWidth() * 3) / 5,
-                                (playSpace.getHeight() * 4) / 5);
-
-                Attacker blueAttacker = new Attacker(6, (playSpace.getWidth() * 2) / 5, playSpace.getHeight() / 2);
-
-                Player[] redPlayers = {
-                                redGoalkeeper,
-                                redDefender1,
-                                redDefender2,
-                                redMidfielder1,
-                                redMidfielder2,
-                                redAttacker
-                };
-
-                Player[] bluePlayers = {
-                                blueGoalkeeper,
-                                blueDefender1,
-                                blueDefender2,
-                                blueMidfielder1,
-                                blueMidfielder2,
-                                blueAttacker
-                };
+                Team redTeam = new Team("Red Team", Color.RED, redPlayers);
+                Team blueTeam = new Team("Blue Team", Color.BLUE, bluePlayers);
 
                 Ball ball = new Ball(
                                 playSpace.getWidth() / 2,
                                 playSpace.getHeight() / 2);
 
-                // redGoalkeeper.getXPos(),
-                // redGoalkeeper.getYPos());
-
                 SimulationPanel panel = new SimulationPanel(
                                 map,
-                                redPlayers,
-                                bluePlayers,
+                                redTeam,
+                                blueTeam,
                                 ball);
 
                 panel.setPreferredSize(
