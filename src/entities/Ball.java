@@ -2,11 +2,11 @@ package entities;
 
 public class Ball extends Entity {
 
-    public Ball(int xPos, int yPos) {
+    public Ball(double xPos, double yPos) {
         super(xPos, yPos);
     }
 
-    void move(int x, int y) {
+    void move(double x, double y) {
         xPos += x;
         yPos += y;
     }

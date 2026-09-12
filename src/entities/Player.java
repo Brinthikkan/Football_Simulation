@@ -4,7 +4,7 @@ public abstract class Player extends Entity {
 
     int number;
 
-    Player(int number, int xPos, int yPos) {
+    Player(int number, double xPos, double yPos) {
         super(xPos, yPos);
         this.number = number;
     }

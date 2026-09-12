@@ -2,7 +2,7 @@ package entities;
 
 public class Coach extends Entity {
 
-    public Coach(int xPos, int yPos) {
+    public Coach(double xPos, double yPos) {
         super(xPos, yPos);
     }
 
