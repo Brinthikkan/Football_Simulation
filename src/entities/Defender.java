@@ -7,8 +7,15 @@ public class Defender extends Player {
     }
 
     @Override
-    void pass() {
+    public void pass() {
+        if (!hasPossession(ball)) {
+            return;
+        }
 
+        int index = Math.random() < 0.5 ? 3 : 4;
+        Player receiver = team.getPlayers()[index];
+
+        ball.moveTo(receiver.getXPos(), receiver.getYPos());
     }
 
 }

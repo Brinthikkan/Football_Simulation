@@ -11,4 +11,9 @@ public class Ball extends Entity {
         yPos += y;
     }
 
+    public void moveTo(double x, double y) {
+    xPos = x;
+    yPos = y;
+}
+
 }
