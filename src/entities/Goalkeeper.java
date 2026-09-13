@@ -7,7 +7,15 @@ public class Goalkeeper extends Player {
     }
 
     @Override
-    void pass() {
+    public void pass() {
+        if (!hasPossession(ball)) {
+            return;
+        }
+
+        int index = Math.random() < 0.5 ? 1 : 2;
+        Player receiver = team.getPlayers()[index];
+
+        ball.moveTo(receiver.getXPos(), receiver.getYPos());
     }
 
 }

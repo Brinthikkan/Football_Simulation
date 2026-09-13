@@ -3,6 +3,8 @@ package entities;
 public abstract class Player extends Entity {
 
     int number;
+    Ball ball;
+    Team team;
 
     double spawnX;
     double spawnY;
@@ -14,16 +16,20 @@ public abstract class Player extends Entity {
         this.spawnY = yPos;
     }
 
-    public void resetPositon(){
+    public void setMatchDetails(Ball ball, Team team) {
+        this.ball = ball;
+        this.team = team;
+    }
+
+    public void resetPositon() {
         xPos = spawnX;
         yPos = spawnY;
     }
-
 
     public boolean hasPossession(Ball ball) {
         return xPos == ball.xPos && yPos == ball.yPos;
     }
 
-    abstract void pass();
+    public abstract void pass();
 
 }

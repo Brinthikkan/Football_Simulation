@@ -3,7 +3,7 @@ package app;
 import java.awt.*;
 import java.awt.event.*;
 
-import javax.swing.Timer;               // added to try get the ball to Update every n milliseconds
+import javax.swing.Timer; // added to try get the ball to Update every n milliseconds
 
 import entities.Ball;
 import entities.Player;
@@ -34,6 +34,14 @@ public class Main {
                                 playSpace.getWidth() / 2,
                                 playSpace.getHeight() / 2);
 
+                for (Player player : redPlayers) {
+                        player.setMatchDetails(ball, redTeam);
+                }
+
+                for (Player player : bluePlayers) {
+                        player.setMatchDetails(ball, blueTeam);
+                }
+
                 SimulationPanel panel = new SimulationPanel(
                                 map,
                                 redTeam,
@@ -48,6 +56,49 @@ public class Main {
                 frame.add(panel);
                 frame.pack();
                 frame.setVisible(true);
+
+                Timer timer = new Timer(1000, e -> {
+                        Player attacker;
+
+                        if (Math.random() < 0.5) {
+                                attacker = redPlayers[5];
+                        } else {
+                                attacker = bluePlayers[5];
+                        }
+
+                        ball.moveTo(attacker.getXPos(), attacker.getYPos());
+                        panel.repaint();
+                });
+
+                timer.setRepeats(false);
+                timer.start();
+
+                Timer passingTimer = new Timer(2000, e -> {
+                        Player ballHolder = null;
+
+                        for (Player player : redPlayers) {
+                                if (player.hasPossession(ball)) {
+                                        ballHolder = player;
+                                        break;
+                                }
+                        }
+
+                        if (ballHolder == null) {
+                                for (Player player : bluePlayers) {
+                                        if (player.hasPossession(ball)) {
+                                                ballHolder = player;
+                                                break;
+                                        }
+                                }
+                        }
+
+                        if (ballHolder != null) {
+                                ballHolder.pass();
+                                panel.repaint();
+                        }
+                });
+
+                passingTimer.start();
 
                 frame.addWindowListener(
                                 new WindowAdapter() {

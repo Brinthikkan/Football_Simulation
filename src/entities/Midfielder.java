@@ -7,7 +7,14 @@ public class Midfielder extends Player {
     }
 
     @Override
-    void pass() {
+    public void pass() {
+        if (!hasPossession(ball)) {
+            return;
+        }
+
+        Player receiver = team.getPlayers()[5];
+
+        ball.moveTo(receiver.getXPos(), receiver.getYPos());
     }
 
 }
