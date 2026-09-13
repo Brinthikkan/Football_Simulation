@@ -2,7 +2,7 @@ package entities;
 
 public class Defender extends Player {
 
-    public Defender(int number, int xPos, int yPos) {
+    public Defender(int number, double xPos, double yPos) {
         super(number, xPos, yPos);
     }
 

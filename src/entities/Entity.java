@@ -2,19 +2,19 @@ package entities;
 
 public class Entity {
 
-    int xPos;
-    int yPos;
+    double xPos;
+    double yPos;
 
-    Entity(int xPos, int yPos) {
+    Entity(double xPos, double yPos) {
         this.xPos = xPos;
         this.yPos = yPos;
     }
 
-    public int getXPos() {
+    public double getXPos() {
         return xPos;
     }
 
-    public int getYPos() {
+    public double getYPos() {
         return yPos;
     }
 

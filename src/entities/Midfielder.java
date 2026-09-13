@@ -2,7 +2,7 @@ package entities;
 
 public class Midfielder extends Player {
 
-    public Midfielder(int number, int xPos, int yPos) {
+    public Midfielder(int number, double xPos, double yPos) {
         super(number, xPos, yPos);
     }
 

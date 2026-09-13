@@ -2,7 +2,7 @@ package entities;
 
 public class Goalkeeper extends Player {
 
-    public Goalkeeper(int number, int xPos, int yPos) {
+    public Goalkeeper(int number, double xPos, double yPos) {
         super(number, xPos, yPos);
     }
 

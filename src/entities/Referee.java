@@ -2,7 +2,7 @@ package entities;
 
 public class Referee extends Entity {
 
-    public Referee(int xPos, int yPos) {
+    public Referee(double xPos, double yPos) {
         super(xPos, yPos);
     }
 
