@@ -13,6 +13,7 @@ public class Match {
     private Ball ball;
 
     private GameState gameState;
+    private Ruleset ruleset;
 
     
     private ArrayList<GoalEvent> goalEvents;
@@ -29,7 +30,7 @@ public class Match {
                 blueTeam,
                 ball
         );
-
+        this.ruleset = new Ruleset();
         this.goalEvents = new ArrayList<>();
     }
 
@@ -156,6 +157,10 @@ public class Match {
 
     public Ball getBall() {
         return ball;
+    }
+
+    public Ruleset getRuleset() {
+    return ruleset;
     }
 
     public ArrayList<GoalEvent> getGoalEvents() {
