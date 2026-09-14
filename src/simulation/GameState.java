@@ -9,8 +9,8 @@ public class GameState {
     private Team blueTeam;
     private Ball ball;
 
-    private int redScore;
-    private int blueScore;
+    
+    private Score score;
 
     private int elapsedTime;
 
@@ -20,12 +20,13 @@ public class GameState {
     private MatchPhase currentPhase;
 
     public GameState(Team redTeam, Team blueTeam, Ball ball) {
+
         this.redTeam = redTeam;
         this.blueTeam = blueTeam;
         this.ball = ball;
 
-        this.redScore = 0;
-        this.blueScore = 0;
+       
+        this.score = new Score();
 
         this.elapsedTime = 0;
 
@@ -35,7 +36,7 @@ public class GameState {
         this.currentPhase = MatchPhase.PRE_GAME;
     }
 
-
+   
 
     public Team getRedTeam() {
         return redTeam;
@@ -45,31 +46,35 @@ public class GameState {
         return blueTeam;
     }
 
-
+   
 
     public Ball getBall() {
         return ball;
     }
 
+   
 
+    public Score getScore() {
+        return score;
+    }
 
     public int getRedScore() {
-        return redScore;
+        return score.getRedScore();
     }
 
     public int getBlueScore() {
-        return blueScore;
+        return score.getBlueScore();
     }
 
     public void addRedGoal() {
-        redScore++;
+        score.addRedGoal();
     }
 
     public void addBlueGoal() {
-        blueScore++;
+        score.addBlueGoal();
     }
 
-
+   
 
     public int getElapsedTime() {
         return elapsedTime;
@@ -81,7 +86,7 @@ public class GameState {
         }
     }
 
-
+ 
 
     public boolean isRunning() {
         return running;
@@ -115,7 +120,7 @@ public class GameState {
         currentPhase = MatchPhase.POST_GAME;
     }
 
-
+  
 
     public MatchPhase getCurrentPhase() {
         return currentPhase;
@@ -125,11 +130,12 @@ public class GameState {
         this.currentPhase = currentPhase;
     }
 
-    
+ 
 
     public void reset() {
-        redScore = 0;
-        blueScore = 0;
+
+        score.reset();
+
         elapsedTime = 0;
 
         running = false;
@@ -138,11 +144,9 @@ public class GameState {
         currentPhase = MatchPhase.PRE_GAME;
     }
 
-    
     public String toString() {
         return "GameState{" +
-                "redScore=" + redScore +
-                ", blueScore=" + blueScore +
+                "score=" + score +
                 ", elapsedTime=" + elapsedTime +
                 ", running=" + running +
                 ", paused=" + paused +
