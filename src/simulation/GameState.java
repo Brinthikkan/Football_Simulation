@@ -32,7 +32,7 @@ public class GameState {
         this.running = false;
         this.paused = false;
 
-        this.currentPhase = MatchPhase.NOT_STARTED;
+        this.currentPhase = MatchPhase.PRE_GAME;
     }
 
 
@@ -112,7 +112,7 @@ public class GameState {
     public void endMatch() {
         running = false;
         paused = false;
-        currentPhase = MatchPhase.FINISHED;
+        currentPhase = MatchPhase.POST_GAME;
     }
 
 
@@ -135,7 +135,7 @@ public class GameState {
         running = false;
         paused = false;
 
-        currentPhase = MatchPhase.NOT_STARTED;
+        currentPhase = MatchPhase.PRE_GAME;
     }
 
     
