@@ -142,5 +142,17 @@ public class SimulationPanel extends Panel {
                 marginY + (int) ball.getYPos() - ballSize / 2,
                 ballSize,
                 ballSize);
+
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Arial", Font.BOLD, 20));
+
+        String scoreText =
+            redTeam.getName() + " "
+            + match.getGameState().getRedScore()
+            + " - "
+            + match.getGameState().getBlueScore()
+            + " " + blueTeam.getName();
+
+        g.drawString(scoreText, marginX + 20, marginY + 30);
     }
 }
