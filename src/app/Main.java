@@ -49,7 +49,8 @@ public class Main {
                                 map,
                                 redTeam,
                                 blueTeam,
-                                ball);
+                                ball,
+                                match);
 
                 panel.setPreferredSize(
                                 new Dimension(
