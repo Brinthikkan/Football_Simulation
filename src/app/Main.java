@@ -102,9 +102,14 @@ public class Main {
                                 if (isBallInGoal(ball, playSpace.getLeftGoal())) {
                                       match.recordGoal(ballHolder, blueTeam, null, false);
                                       System.out.println("GOAL FOR BLUE!");
+
+                                      resetAfterGoal(ball, playSpace, redPlayers, bluePlayers);
+                                        
                                  } else if (isBallInGoal(ball, playSpace.getRightGoal())) {
                                       match.recordGoal(ballHolder, redTeam, null, false);
                                       System.out.println("GOAL FOR RED!");
+
+                                      resetAfterGoal(ball, playSpace, redPlayers, bluePlayers);
                                  }
                                 
                                  panel.repaint();
@@ -127,5 +132,22 @@ private static boolean isBallInGoal(Ball ball, world.Goal goal) {
                 && ball.getYPos() >= goal.getY()
                 && ball.getYPos() <= goal.getY() + goal.getHeight();
 }
-        
+
+private static void resetAfterGoal(
+        Ball ball,
+        PlaySpace playSpace,
+        Player[] redPlayers,
+        Player[] bluePlayers) {
+
+        ball.moveTo(
+                playSpace.getWidth() / 2,
+                playSpace.getHeight() / 2);
+
+        for (Player player : redPlayers) {
+                player.resetPosition();
+        }
+
+        for (Player player : bluePlayers) {
+                player.resetPosition();
+        }
 }
