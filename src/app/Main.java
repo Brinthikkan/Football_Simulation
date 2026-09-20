@@ -97,7 +97,16 @@ public class Main {
 
                         if (ballHolder != null) {
                                 ballHolder.pass();
-                                panel.repaint();
+
+                                if (isBallInGoal(ball, playSpace.getLeftGoal())) {
+                                      match.recordGoal(ballHolder, blueTeam, null, false);
+                                      System.out.println("GOAL FOR BLUE!");
+                                 } else if (isBallInGoal(ball, playSpace.getRightGoal())) {
+                                      match.recordGoal(ballHolder, redTeam, null, false);
+                                      System.out.println("GOAL FOR RED!");
+                                 }
+                                
+                                 panel.repaint();
                         }
                 });
 
@@ -110,4 +119,12 @@ public class Main {
                                         }
                                 });
         }
+
+private static boolean isBallInGoal(Ball ball, world.Goal goal) {
+        return ball.getXPos() >= goal.getX()
+                && ball.getXPos() <= goal.getX() + goal.getWidth()
+                && ball.getYPos() >= goal.getY()
+                && ball.getYPos() <= goal.getY() + goal.getHeight();
+}
+        
 }
