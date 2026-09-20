@@ -8,6 +8,7 @@ import world.Goal;
 import world.PlaySpace;
 import world.Environment;
 import world.GameMap;
+import simulation.Match;
 
 public class SimulationPanel extends Panel {
 
@@ -16,17 +17,20 @@ public class SimulationPanel extends Panel {
     private Team redTeam;
     private Team blueTeam;
     private Ball ball;
+    private Match match;
 
     public SimulationPanel(
             GameMap map,
             Team redTeam,
             Team blueTeam,
-            Ball ball) {
+            Ball ball,
+            Match match) {
 
         this.map = map;
         this.redTeam = redTeam;
         this.blueTeam = blueTeam;
         this.ball = ball;
+        this.match = match;
     }
 
     private void drawPlayers(
