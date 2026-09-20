@@ -34,6 +34,9 @@ public class Main {
                                 playSpace.getWidth() / 2,
                                 playSpace.getHeight() / 2);
 
+                Match match = new Match(redTeam, blueTeam, ball);
+                match.start();
+
                 for (Player player : redPlayers) {
                         player.setMatchDetails(ball, redTeam);
                 }
