@@ -166,4 +166,22 @@ public class Match {
     public ArrayList<GoalEvent> getGoalEvents() {
         return goalEvents;
     }
+
+    public MatchStatistics getStatistics() {
+        return new MatchStatistics(goalEvents);
+    }
+
+    public void printMatchStatistics() {
+        MatchStatistics stats = getStatistics();
+
+        System.out.println("=== MATCH STATISTICS ===");
+        System.out.println("Total goals: "
+                + stats.getTotalGoals());
+        System.out.println("Own goals: "
+                + stats.getOwnGoals());
+        System.out.println("Goals by player: "
+                + stats.getPlayerGoals());
+        System.out.println("Top scorer goal count: "
+                + stats.getTopScorerGoalCount());
+    }
 }
