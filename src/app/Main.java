@@ -15,6 +15,10 @@ import world.GameMap;
 import world.PlaySpace;
 import world.MapPreset;
 
+import simulation.Match;
+import simulation.MatchListener;
+import simulation.GoalEvent;
+
 public class Main {
 
         public static void main(String[] args) {
@@ -35,6 +39,23 @@ public class Main {
                                 playSpace.getHeight() / 2);
 
                 Match match = new Match(redTeam, blueTeam, ball);
+                match.addMatchListener(new MatchListener() {
+
+                @Override
+                public void onMatchStarted() {
+                 System.out.println("Observer: Match has started!");
+                }
+
+                @Override
+                public void onGoalScored(GoalEvent goal) {
+                 System.out.println("Observer: A goal was scored!");
+                }
+
+                @Override
+                public void onMatchEnded() {
+                 System.out.println("Observer: Match has ended!");
+                }
+                });
                 match.start();
 
                 for (Player player : redPlayers) {
