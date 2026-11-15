@@ -79,6 +79,7 @@ public class Match {
                             + " - "
                             + gameState.getBlueScore()
             );
+            printMatchStatistics();
         }
     }
 
@@ -184,4 +185,5 @@ public class Match {
         System.out.println("Top scorer goal count: "
                 + stats.getTopScorerGoalCount());
     }
+
 }
