@@ -18,6 +18,16 @@ public class Match {
     
     private ArrayList<GoalEvent> goalEvents;
 
+    private final ArrayList<MatchListener> listeners = new ArrayList<>();
+
+    public void addMatchListener(MatchListener listener) {
+    listeners.add(listener);
+    }
+
+    public void removeMatchListener(MatchListener listener) {
+    listeners.remove(listener);
+    }
+
     
     public Match(Team redTeam, Team blueTeam, Ball ball) {
 
@@ -53,6 +63,10 @@ public class Match {
             gameState.pauseMatch();
 
             System.out.println("Match paused.");
+
+            for (MatchListener listener : listeners) {
+            listener.onMatchStarted();
+        }
         }
     }
 
@@ -73,6 +87,11 @@ public class Match {
             gameState.endMatch();
 
             System.out.println("Match finished!");
+
+            for (MatchListener listener : listeners) {
+             listener.onMatchEnded();
+            }
+            
             System.out.println(
                     "Final Score: "
                             + gameState.getRedScore()
@@ -119,6 +138,10 @@ public class Match {
         );
 
         goalEvents.add(goalEvent);
+
+        for (MatchListener listener : listeners) {
+         listener.onGoalScored(goalEvent);
+        }
 
        
         if (scoringTeam == redTeam) {
